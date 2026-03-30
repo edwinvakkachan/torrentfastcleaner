@@ -10,7 +10,8 @@ try {
     console.log('🪻🪻🪻🪻🪻🪻 qbit helper started 🪻🪻🪻🪻🪻🪻');
     await loginQB();
 const total=await getTorrents();
-console.log('total stalled and failed metadata count is',total)
+console.log('🪻🪻🪻🪻🪻🪻🪻🪻🪻🪻🪻🪻🪻')
+console.log('🪻 total stalled and failed metadata count is 🪻',total)
 
 if(total>=4){
        await retry(
