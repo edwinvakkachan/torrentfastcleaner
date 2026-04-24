@@ -6,8 +6,9 @@ services:
     container_name: torrentfastcleaner
     restart: no
     environment:
-      HA_WEBHOOK_URL: ${HA_WEBHOOK_URL} #triggering next app after complting current app tasks
+      HA_WEBHOOK_URL_RADARR: ${HA_WEBHOOK_URL_RADARR} #triggering next app after complting current app tasks
       HA_WEBHOOKERROR_URL: ${HA_WEBHOOKERROR_URL}
+      HA_WEBHOOK_URL_SONARR: ${HA_WEBHOOK_URL_SONARR}
       QBITIP: ${QBITIP}
       QBITUSER: ${QBITUSER}
       QBITPASS: ${QBITPASS}

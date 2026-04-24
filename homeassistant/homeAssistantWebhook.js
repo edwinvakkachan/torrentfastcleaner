@@ -2,19 +2,20 @@ import axios from "axios";
 
 
 
-const HA_WEBHOOK_URL = process.env.HA_WEBHOOK_URL; 
+const HA_WEBHOOK_URL_RADARR = process.env.HA_WEBHOOK_URL_RADARR; 
 const HA_WEBHOOKError_URL = process.env.HA_WEBHOOKERROR_URL;
+const HA_WEBHOOK_URL_SONARR=process.env.HA_WEBHOOK_URL_SONARR;
 
 // Example: http://192.168.0.50:8123/api/webhook/your_webhook_id
 
-export async function triggerHomeAssistantWebhook(payload = {}) {
-  if (!HA_WEBHOOK_URL) {
-    throw new Error("HA_WEBHOOK_URL not set");
+export async function triggerHomeAssistantWebhookRadarr(payload = {}) {
+  if (!HA_WEBHOOK_URL_RADARR) {
+    throw new Error("HA_WEBHOOK_URL_RADARR not set");
   }
 
   try {
     const response = await axios.post(
-      HA_WEBHOOK_URL,
+      HA_WEBHOOK_URL_RADARR,
       payload,
       {
         headers: { "Content-Type": "application/json" },
@@ -22,11 +23,11 @@ export async function triggerHomeAssistantWebhook(payload = {}) {
       }
     );
 
-    console.log("✅ Home Assistant webhook triggered:", response.status);
+    console.log("✅ Home Assistant webhook Radarr triggered:", response.status);
     return response.data;
 
   } catch (error) {
-    console.error("❌ Failed to trigger Home Assistant webhook:", error.message);
+    console.error("❌ Failed to trigger Home Assistant Radarr webhook:", error.message);
     throw error;   // REQUIRED
   }
 }
@@ -53,6 +54,30 @@ export async function triggerHomeAssistantWebhookWhenErrorOccurs(payload = {}) {
 
   } catch (error) {
     console.error("❌ Failed to trigger Home Assistant webhook Error URL :", error.message);
+    throw error;   // REQUIRED
+  }
+}
+
+export async function triggerHomeAssistantWebhookSonarr(payload = {}) {
+  if (!HA_WEBHOOK_URL_SONARR) {
+    throw new Error("HA_WEBHOOK_URL_SONARR not set");
+  }
+
+  try {
+    const response = await axios.post(
+      HA_WEBHOOK_URL_SONARR,
+      payload,
+      {
+        headers: { "Content-Type": "application/json" },
+        timeout: 5000,
+      }
+    );
+
+    console.log("✅ Home Assistant webhook Sonarr triggered:", response.status);
+    return response.data;
+
+  } catch (error) {
+    console.error("❌ Failed to trigger Home Assistant sonarr webhook:", error.message);
     throw error;   // REQUIRED
   }
 }
