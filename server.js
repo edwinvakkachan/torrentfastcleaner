@@ -24,7 +24,7 @@ if(total.movie>=3){
 );
 }else if(total.tvshows>=3){
 console.log('triggering Tvshow cleanup');
-  await retry(triggerHomeAssistantWebhookRadarr,{ status: "success" },"homeassistant-success",5)
+  await retry(triggerHomeAssistantWebhookSonarr,{ status: "success" },"homeassistant-success",5)
 }
 else{
   console.log('Not triggering any clean up')
