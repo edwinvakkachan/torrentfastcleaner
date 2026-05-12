@@ -14,7 +14,7 @@ console.log('🪻🪻🪻🪻🪻🪻🪻🪻🪻🪻🪻🪻🪻')
 console.log('🪻🪻 Total stalled and failed metadata movies:🪻',total.movie);
 console.log('🪻🪻 Total stalled and failed metadata TvShows:🪻',total.tvshows);
 
-if(total.movie>=3){
+if(total.movie>=1){
   console.log('triggering movie cleanup');
        await retry(
   triggerHomeAssistantWebhookRadarr,
@@ -22,7 +22,7 @@ if(total.movie>=3){
   "homeassistant-success",
   5
 );
-}else if(total.tvshows>=3){
+}else if(total.tvshows>=1){
 console.log('triggering Tvshow cleanup');
   await retry(triggerHomeAssistantWebhookSonarr,{ status: "success" },"homeassistant-success",5)
 }
